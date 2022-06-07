@@ -1,0 +1,167 @@
+.card {
+    //Tạo chiều sâu của khung hình, hướng về phía người dùng
+    perspective: 150rem;
+    -moz-perspective: 150rem;
+    height: 50rem;
+    position: relative;
+
+    &__side {
+        height: 52rem;
+        border-radius: .5rem;
+        transition: all .8s ease;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        //Không hiển thị mặt sau khi xoay thẻ
+        backface-visibility: hidden;
+        //Giấu phần bị tràn ra khỏi box
+        overflow: hidden;
+        box-shadow: 0 1rem 4rem rgba($color: #000000, $alpha: .15);
+        //Kĩ thuật xử lý xoay thẻ
+        &--font {
+            background-color: $color-white;
+        }
+        &--back {
+            transform: rotateY(180deg);
+            &--1 {
+                background-image: linear-gradient(to top right, $color-secondary-light, $color-secondary-dark);
+            }
+            &--2 {
+                background-image: linear-gradient(to top right, $color-primary-light, $color-primary-dark);
+            }
+            &--3 {
+                background-image: linear-gradient(to top right, $color-tertiary-light, $color-tertiary-dark);
+            }
+        }
+    }
+    
+    &:hover &__side--font{
+        transform: rotateY(-180deg);
+    }
+    &:hover &__side--back{
+        transform: rotateY(0);
+    }
+
+    &__picture {
+        height: 35vh;
+        background-size: cover;
+        background-position: top;
+        background-blend-mode: screen;
+        clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+        margin-bottom: 2rem;
+
+        &--1 {
+            background-image: linear-gradient(
+                to right bottom,
+                $color-secondary-light,
+                $color-secondary-dark), 
+            url(../img/nat-5.jpg);
+        }
+
+        &--2 {
+            background-image: linear-gradient(
+                to right bottom,
+                $color-primary-light,
+                $color-primary-dark), 
+            url(../img/nat-6.jpg);
+        }
+
+        &--3 {
+            background-image: linear-gradient(
+                to right bottom,
+                $color-tertiary-light,
+                $color-tertiary-dark), 
+            url(../img/nat-7.jpg);
+        }
+    }
+
+    &__heading {
+        padding: .5rem 1.5rem;
+        display: inline-block;
+        font-size: 2.5rem;
+        font-weight: 300;
+        text-transform: uppercase;
+        color: $color-white;
+        //box-decoration-break: clone;
+
+        //Background
+        &--bg1 {
+            background-image: linear-gradient(
+            to right bottom,
+            $color-secondary-light,
+            $color-secondary-dark,
+            );
+        }
+
+        &--bg2 {
+            background-image: linear-gradient(
+            to right bottom,
+            $color-primary-light,
+            $color-primary-dark,
+            );
+        }
+
+        &--bg3 {
+            background-image: linear-gradient(
+            to right bottom,
+            $color-tertiary-light,
+            $color-tertiary-dark,
+            );
+        }
+
+        //Text
+        &--1 {
+            position: absolute;
+            top: 17vh;
+            right: 3rem;
+        }
+        &--2 {
+            position: absolute;
+            top: 24vh;
+            right: 3rem;
+        }
+    }
+
+    &__details {   
+        // text-align: center; 
+        ul {
+            width: 70%;
+            margin: auto;
+            // display: inline-block;
+            list-style: none;
+            li {
+                font-size: $default-font-size;
+                font-weight: 300;
+                text-align: center;
+                padding: 1rem;
+                &:not(:last-child) {
+                    border-bottom: .1rem solid $color-grey-light-2;
+                }
+            }
+        } 
+    }
+    //Behind Card Style
+    &__behind {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        text-align: center;
+    }  
+    &__price-box {
+        margin-bottom: 8rem;
+        color: $color-white;
+
+        &--only {
+            font-size: 1.6rem;
+            text-transform: uppercase;
+        }
+        &--price {
+            font-size: 6rem;
+            font-weight: 100;
+        }
+    }  
+}

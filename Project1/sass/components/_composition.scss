@@ -1,0 +1,38 @@
+.composition {
+    position: relative;
+    &__photo {
+        width: 55%;
+        box-shadow: 0 1rem 4rem rgba($color: #000000, $alpha: .4);
+        border-radius: .2rem;
+        position: absolute;
+        transition: all .2s;
+        z-index: 10;
+
+        &--p1 {
+            top: -2rem;
+            left: 0;
+        }
+        &--p2 {
+            top: 2rem;
+            right: 0;
+        }
+        &--p3 {
+            left: 25%;
+            top: 10rem;
+        }
+        &:hover {
+            z-index: 999;
+            transform: scale(1.05);
+            &:selector {
+                transform: scale(.9);
+            }
+            //Thiết lập đường viền bên ngoài
+            outline: 1rem solid $color-primary;
+            outline-offset: 2rem;
+            box-shadow: 0 2rem 4rem rgba($color: #000000, $alpha: .5);
+        }
+    }
+    &:hover &__photo:not(:hover) {
+        transform: scale(.95);
+    }
+}
